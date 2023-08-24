@@ -13,7 +13,7 @@
 ![Screenshot of RoahOS](screenshot3.png)![Screenshot of RoahOS](screenshot4.png)
 ![Screenshot of RoahOS](screenshot5.png)
 
-### You can access the shortcuts/hotkeys by pressing Mod + s /n
+### You can access the shortcuts/hotkeys by pressing Mod + s
 Here, Mod stands for windows key or super key.
 
 ## Installing dependencies:
