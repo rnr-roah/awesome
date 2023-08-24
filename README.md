@@ -28,7 +28,7 @@ You can install awesome by inserting the following command in the terminal:
 #
 `sudo apt-get install awesome or
 sudo apt install awesome`
-
+#
 ## Configuring awesome:
 Again open the directory where you downloaded the 'awesome' folder and enter the following command
 #
