@@ -8,10 +8,10 @@
 [4) _Configuring_ ](https://github.com/rnr-roah/awesome/blob/main/README.md#4configuring-awesome)<br>
 [5) _Booting into awesome_](https://github.com/rnr-roah/awesome/blob/main/README.md#5booting-into-awesome-wm)<br>
 ## Features:
--Work specified workspaces; different processes/widows are assigned different workspaces such as Term for terminals, Internet for browsers, Develop for editors, Files for file explorer and VM for virtual machine windows.
--Very minimal and resource efficient
--Keyboard centric and saves lot of time used to reach for a mouse
--Productivity and efficiency centric
+-Work specified workspaces; different processes/widows are assigned different workspaces such as Term for terminals, Internet for browsers, Develop for editors, Files for file explorer and VM for virtual machine windows.<br>
+-Very minimal and resource efficient. <br>
+-Keyboard centric and saves lot of time used to reach for a mouse<br>
+-Productivity and efficiency centric<br>
 
 ## Screenshot:
 ![Screenshot of RoahOS](screenshot.png)![Screenshot of RoahOS](screenshot2.png)
