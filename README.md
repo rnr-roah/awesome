@@ -8,8 +8,8 @@
 -Keyboard centric and saves lot of time used to reach for a mouse
 -Productivity and efficiency centric
 
-##Screenshot:
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](screenshot.jpg)
+## Screenshot:
+![Screenshot of RoahOS](/assets/images/screenshot.png)
 
 ### You can access the shortcuts/hotkeys by pressing Mod + s /n
 Here, Mod stands for windows key or super key.
