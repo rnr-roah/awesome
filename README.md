@@ -1,7 +1,7 @@
 # Awesome
 
-#### _This is a Theme/Cofiguration for awesome wm for easy usage and minimal overall system for debian or debian based distros such as ubuntu_
-
+#### _This is a Theme/Cofiguration for awesome wm for easy usage and minimal overall system for debian or debian based distros such as ubuntu_ 
+[1) Cloning this repository](# 1)-Cloning-this-repository)
 ## Features:
 -Work specified workspaces; different processes/widows are assigned different workspaces such as Term for terminals, Internet for browsers, Develop for editors, Files for file explorer and VM for virtual machine windows.
 -Very minimal and resource efficient
