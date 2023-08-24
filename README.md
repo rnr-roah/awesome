@@ -15,7 +15,15 @@
 
 ### You can access the shortcuts/hotkeys by pressing Mod + s
 Here, Mod stands for windows key or super key.
-
+## 1) Cloning this repository 
+First download git:
+#
+`sudo apt install git - y`
+#
+Open a terminal and enter:
+#
+`git clone https://github.com/rnr-roah/awesome`
+#
 ## Installing dependencies:
 There are some specific programs installed for efficient workflow and for ease of use you should install them via the command:
 #
