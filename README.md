@@ -9,7 +9,7 @@
 -Productivity and efficiency centric
 
 ## Screenshot:
-![Screenshot of RoahOS](/assets/images/screenshot.png)
+![Screenshot of RoahOS](screenshot.png)
 
 ### You can access the shortcuts/hotkeys by pressing Mod + s /n
 Here, Mod stands for windows key or super key.
