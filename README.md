@@ -15,7 +15,7 @@
 
 ### You can access the shortcuts/hotkeys by pressing Mod + s
 Here, Mod stands for windows key or super key.
-## 1) Cloning this repository 
+## 1 Cloning this repository 
 First download git:
 #
 `sudo apt install git - y`
