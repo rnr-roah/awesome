@@ -1,7 +1,11 @@
 # Awesome
 
 #### _This is a Theme/Cofiguration for awesome wm for easy usage and minimal overall system for debian or debian based distros such as ubuntu_ 
-[1) Cloning this repository](https://github.com/rnr-roah/awesome/blob/main/README.md#1-cloning-this-repository)
+[1) Cloning this repository](https://github.com/rnr-roah/awesome/blob/main/README.md#1-cloning-this-repository) <br>
+[2) Installing dependencies ](https://github.com/rnr-roah/awesome/blob/main/README.md#2installing-dependencies)<br>
+[3) Installing awesome](https://github.com/rnr-roah/awesome/blob/main/README.md#3installing-awesome)<br>
+[4) Configuring ](https://github.com/rnr-roah/awesome/blob/main/README.md#4configuring-awesome)<br>
+[5) Booting into awesome](https://github.com/rnr-roah/awesome/blob/main/README.md#5booting-into-awesome-wm)<br>
 ## Features:
 -Work specified workspaces; different processes/widows are assigned different workspaces such as Term for terminals, Internet for browsers, Develop for editors, Files for file explorer and VM for virtual machine windows.
 -Very minimal and resource efficient
