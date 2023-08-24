@@ -56,10 +56,10 @@ sudo apt install compton -y
 echo
 echo "Installing kmix"
 echo
-sudo apt install kmix
+sudo apt install kmix -y
 echo
 echo "Installing Flameshot"
-sudo apt install flameshot
+sudo apt install flameshot - y
 echo
 
 sleep 3
