@@ -1,6 +1,7 @@
 # Awesome
 
 #### _This is a Theme/Cofiguration for awesome wm for easy usage and minimal overall system for debian or debian based distros such as ubuntu_ 
+###### Jump into:
 [1) Cloning this repository](https://github.com/rnr-roah/awesome/blob/main/README.md#1-cloning-this-repository) <br>
 [2) Installing dependencies ](https://github.com/rnr-roah/awesome/blob/main/README.md#2installing-dependencies)<br>
 [3) Installing awesome](https://github.com/rnr-roah/awesome/blob/main/README.md#3installing-awesome)<br>
