@@ -1,12 +1,15 @@
 # Awesome
 
-# This is a Theme/Cofiguration for awesome wm for easy usage and minimal overall system for debian or debian based distros such as ubuntu
+## This is a Theme/Cofiguration for awesome wm for easy usage and minimal overall system for debian or debian based distros such as ubuntu
 
-#3 Features:
+## Features:
 -Work specified workspaces; different processes/widows are assigned different workspaces such as Term for terminals, Internet for browsers, Develop for editors, Files for file explorer and VM for virtual machine windows.
 -Very minimal and resource efficient
 -Keyboard centric and saves lot of time used to reach for a mouse
 -Productivity and efficiency centric
+
+##Screenshot:
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](screenshot.jpg)
 
 ### You can access the shortcuts/hotkeys by pressing Mod + s /n
 Here, Mod stands for windows key or super key.
