@@ -51,7 +51,7 @@ Again open the directory where you downloaded the 'awesome' folder and enter the
 <br>
 ## 5) Booting into awesome wm:
 Now, you should be all ready to boot into your new workflow. Logout from your current DE and search for a session setting in the login screen and select awesome. Now enter your password and enter you will be greated with awesome wm.
-You can set the wallpaper from the top right picture icon.
+You can set the wallpaper from the top right picture icon <br>
 and all the shortcuts and hotkeys can be accessed by pressing '`Mod + s`'
 <br>And also always remember '`Mod + Enter`' opens terminal.
 
