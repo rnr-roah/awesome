@@ -681,5 +681,5 @@ awful.spawn.with_shell("variety")
 awful.spawn.with_shell("code")
 awful.spawn.with_shell("nautilus")
 awful.spawn.with_shell("terminator")
-
+awful.spawn.with_shell("arandr")
 
