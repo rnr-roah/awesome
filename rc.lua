@@ -80,7 +80,8 @@ end
 -- First, set some settings
 tyrannical.settings.default_layout =  awful.layout.suit.tile.left
 tyrannical.settings.master_width_factor = 0.66
-
+-- Some nerd icons for tags 
+-- , , , 󰪶, 
 -- Setup some tags
 tyrannical.tags = {
   {
