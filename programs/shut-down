@@ -1,0 +1,38 @@
+#!/bin/bash
+clear
+echo "Power Menu"
+echo "----------"
+echo
+echo "1) Shutdown	*default*"
+echo "2) Reboot"
+echo "3) Logout"
+echo
+echo "Input a number:"
+read ans
+
+if [[ $ans = 1 || $ans = $Return ]]
+then 
+	echo "Sending power off signal.."
+	sleep 3
+	poweroff
+elif [[ $ans = 2 ]]
+then 
+	echo "Rebooting your pc in.." 
+	echo "3 seconds..."
+	sleep 1
+	echo "2 seconds.."
+	sleep 1
+	echo "1 second."
+	reboot
+elif [[ $ans = 3 ]]
+then 
+	echo "Logging out"
+	sleep 1 
+	logout
+else 
+	echo "Wrong input"
+	echo "Press any key to continue. Ctrl + c to exit"
+	read return
+        bash shut-down
+fi
+	
