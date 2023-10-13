@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "Setup your awesome DE. Press enter"
+read
+sudo apt install awesome -y
+sudo apt install git -y
+git clone https://github.com/rnr-roah/awesome ~/.config/awesome
+bash ~/.config/awesome/programs/programs_debian.sh
+
+
