@@ -92,7 +92,7 @@ tyrannical.tags = {
     layout      = awful.layout.suit.tile, -- Use the tile layout
     selected    = true,
     class       = { --Accept the following classes, refuse everything else (because of "exclusive=true")
-      "xterm" , "urxvt" , "alacritty","URxvt","XTerm","konsole","terminator","gnome-terminal"
+      "xterm" , "urxvt" , "alacritty","URxvt","XTerm","konsole","terminator","btman", "shut-down", "wifi",
     }
   } ,
   {
@@ -104,21 +104,21 @@ tyrannical.tags = {
     screen      = screen.count()>1 and 2 or 1,-- Setup on screen 2 if there is more than 1 screen, else on screen 1
     layout      = awful.layout.suit.max,      -- Use the max layout
     class = {
-      "Opera"         , "Firefox"        , "Rekonq"    , "Dillo"        , "brave-browser-nightly",
-      "Chromium"      , "Brave-browser"        , "midori", "Midori",     }
+      "Opera"         , "Firefox"        , "btman"    , "Dillo"        , "brave-browser-nightly", "shut-down",
+      "Chromium"      , "Brave-browser"        , "midori", "Midori", "wifi"     }
   } ,
   
   {
     name = "", --Develop -3
     init        = true,
     exclusive   = true,
-    screen      = 1,
+    screen      = {1,2},
     icon        = "/home/roah/.config/awesome/icons/code.png",
     clone_on    = 2, -- Create a single instance of this tag on screen 1, but also show it on screen 2
     -- The tag can be used on both screen, but only one at once
     layout      = awful.layout.suit.tile                         ,
     class ={
-      "Kate", "codium", "Code", "Code::Blocks" , "nvim", "kate4","Gedit","gedit",
+      "Kate", "codium", "Code", "Code::Blocks" , "nvim", "kate4","Gedit","gedit", "btman", "shut-down", "wifi",
       }
 
   } ,
@@ -130,7 +130,7 @@ tyrannical.tags = {
     icon        = "/home/roah/.config/awesome/icons/files.png",
     layout      = awful.layout.suit.tile,
     class  = {
-      "Thunar", "Konqueror", "Dolphin", "ark", "Org.gnome.Nautilus","emelfm",
+      "Thunar", "Konqueror", "Dolphin", "ark", "Org.gnome.Nautilus", "shut-down", "btman", "wifi",
     }
   } ,
   
@@ -143,7 +143,7 @@ tyrannical.tags = {
     layout      = awful.layout.suit.max,
     --exec_once = {"virtualbox"},
     class  = {
-      "VirtualBox", "virtualbox", "VirtualBox Manager", "kdeconnect.app", "virtualbox manager", "VirtualBoxVM", "+VirtualBoxVM", "scrcpy"
+      "VirtualBox", "virtualbox", "VirtualBox Manager", "kdeconnect.app", "virtualbox manager", "VirtualBoxVM", "+VirtualBoxVM", "scrcpy", "btman", "shut-down", "wifi",
     }
   } ,
 
@@ -169,15 +169,15 @@ tyrannical.properties.intrusive = {
 
 -- Ignore the tiled layout for the matching clients
 tyrannical.properties.floating = {
-  "MPlayer"      , "pinentry"        , "ksnapshot"  , "pinentry"     , "gtksu"          ,
+  "MPlayer"      , "pinentry"        , "ksnapshot"  , "pinentry"     , "btman"          ,
   "xine"         , "feh"             , "kmix"       , "kcalc"        , "xcalc"          ,
   "yakuake"      , "Select Color$"   , "kruler"     , "kcolorchooser", "Paste Special"  ,
-  "spectacle"     , "Insert Picture"  , "kcharselect", "mythfrontend" , "plasmoidviewer"
+  "spectacle"     , "Insert Picture"  , "kcharselect", "mythfrontend" , "plasmoidviewer", "shut-down", "wifi"
 }
 
 -- Make the matching clients (by classes) on top of the default layout
 tyrannical.properties.ontop = {
-  "Xephyr"       , "ksnapshot"       , "spectacle"
+  "Xephyr"       , "ksnapshot"       , "spectacle", "btman", "shut-down", "wifi",
 }
 
 -- Force the matching clients (by classes) to be centered on the screen on init
@@ -289,7 +289,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
     -- @DOC_WIBAR@
-    -- Create the wibox
+    -- Create the top wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, bg=beautiful.bg_normal.."80"})
   
     -- @DOC_SETUP_WIDGETS@
@@ -298,6 +298,7 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.align.horizontal,
       { -- Left widgets
         layout = wibox.layout.align.horizontal,
+	spacing = 100,
         s.mytaglist,
         s.mypromptbox,
       },
@@ -306,10 +307,18 @@ awful.screen.connect_for_each_screen(function(s)
       { -- Right widgets
         layout = wibox.layout.fixed.horizontal,        
         mytextclock,
-	s.mytasklist,
         wibox.widget.systray(),
-	s.mylayoutbox
+        s.mylayoutbox
       },
+    }
+    -- Create the bottom wibox
+    s.mywibox = awful.wibar({ position = "bottom", screen = s, bg=beautiful.bg_normal.."00"})
+  
+    -- @DOC_SETUP_WIDGETS@
+    -- Add widgets to the wibox
+    s.mywibox:setup {
+      layout = wibox.layout.align.horizontal,
+      s.mytasklist
     }
 end)
 -- }}}
@@ -377,25 +386,39 @@ globalkeys = awful.util.table.join(
 ---- Start of Customized
   awful.key({ modkey,           }, "e", function () awful.spawn("nautilus") end,
     {description = "open file manager", group = "Customized launchers"}),
+    
   awful.key({ modkey,           }, "b", function () awful.spawn("brave-browser-nightly") end,
     {description = "open brave", group = "Customized launchers"}),
+    
   awful.key({ modkey,           }, "c", function () awful.spawn("alacritty --class 'nvim' -e nvim") end,
     {description = "open nvim(editor)", group = "Customized launchers"}),
+    
+  awful.key({ modkey, "Shift"   }, "b", function () awful.spawn("alacritty --class 'btman' -e btman") end,
+    {description = "open bluetooth", group = "Customized launchers"}),
+    
+  awful.key({ modkey, "Shift"   }, "i", function () awful.spawn("alacritty --class 'wifi' -e wifi") end,
+    {description = "open wifi", group = "Customized launchers"}),
+  --awful.key({ modkey,           }, "c", function () awful.spawn("alacritty --class 'nvim' -e nvim") end,
+    --{description = "open nvim(editor)", group = "Customized launchers"}),
+    
   awful.key({ modkey, "Shift"   }, "v", function () awful.spawn("virtualbox") end,
     {description = "open virtaulbox manager", group = "Customized launchers"}),
+    
   awful.key({ modkey, "Shift"   }, "s", function () awful.spawn("spectacle") end,
     {description = "open screenshot tool", group = "Customized launchers"}),
+    
   awful.key({ modkey, "Shift"   }, "c", function () awful.spawn("scrcpy") end,
     {description = "open scrcpy", group = "Customized launchers"}),
-  awful.key({ modkey, "Shift"   }, "p", function () awful.spawn("alacritty -e bash shut-down") end,
+    
+  awful.key({ modkey, "Shift"   }, "p", function () awful.spawn("alacritty --class 'shut-down' -e shut-down") end,
     {description = "power menu", group = "Customized launchers"}),
-  awful.key({ modkey, "Shift"   }, "b", function () awful.spawn("alacritty -e ./scripts/bluetooth.sh") end,
-    {description = "open bluetooth manager", group = "Customized launchers"}),
 
   awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
     {description = "open a terminal", group = "launcher"}),
+    
   awful.key({ modkey, "Control" }, "r", awesome.restart,
     {description = "reload awesome", group = "awesome"}),
+    
   awful.key({ modkey, "Shift"   }, "q", awesome.quit,
     {description = "quit awesome", group = "awesome"}),
 
@@ -683,5 +706,5 @@ beautiful.notification_fg = '#d4be98'
 --awful.spawn.with_shell("xfce4-power-manager")
 --awful.spawn.with_shell("nitrogen --restore")
 --awful.spawn.with_shell("picom")
---awful.spawn.with_shell("volumeicon")
+awful.spawn.with_shell("kdeconnect-indicator")
 awful.spawn.with_shell("bash /home/roah/.config/awesome/programs/startup.sh")
