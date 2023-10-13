@@ -11,7 +11,7 @@ run "xfce4-power-manager"
 
 #restoring wallpaper
 
-#run "nitrogen --restore"
+run "nitrogen --restore"
 
 #starting transparency tool
 
@@ -20,7 +20,11 @@ run "picom"
 #starting volume icon
 run "volumeicon"
 
-#starting pulse audio manager
+#starting kdeconnect indicator
+run "kdeconnect-indicator"
+
+#starting thunderbird
+#run "thunderbird"
 
 ##run "pavucontrol &&"
 
