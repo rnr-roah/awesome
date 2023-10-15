@@ -16,6 +16,7 @@ run "nitrogen --restore"
 #starting transparency tool
 
 run "picom"
+run "compton"
 
 #starting volume icon
 run "volumeicon"
