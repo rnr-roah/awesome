@@ -1,0 +1,54 @@
+#!/bin/bash
+cd 
+clear
+echo "Installing Roah OS"
+echo "------------------"
+echo "Seting up roah os. Press enter"
+read  
+echo "Choose a distro:" 
+echo "1) Debian "
+echo "2) Arch "
+echo "Input a number:"
+read ans
+if [[ "$ans" = "1" ]]
+then
+  #echo "Installing awesome wm"
+  sudo apt install awesome -y
+  #echo "Cloning the repo"
+  sudo apt install git -y
+  cd ~/.config
+  mkdir awesome
+  git clone https://github.com/rnr-roah/awesome
+  #echo "Setting up commands and tag icons and wallpapers"
+  sudo cp -r ~/.config/awesome/programs/* /usr/bin/
+  sudo cp -r ~/.config/awesome/icons /usr/share/awesome/icons_tags
+  sudo cp -r ~/.config/awesome/background.png /usr/share/awesome/themes/default/background.png
+  #echo "Running the roahos script"
+  bash ~/.config/awesome/programs/programs_debian.sh
+  
+elif [[ "$ans" = "2" ]]
+then
+  sudo pacman -Sy awesome
+  sudo pacman -Sy git
+  git clone https://github.com/rnr-roah/awesome
+  sudo cp -r ~/.config/awesome/programs/* /usr/bin/
+  sudo cp -r ~/.config/awesome/icons /usr/share/awesome/icons_tags
+  sudo cp -r ~/.config/awesome/background.png /usr/share/awesome/themes/default/background.png
+  bash ~/.config/awesome/programs/programs_arch.sh
+  
+else
+  echo "Wrong input. Press enter"
+  read
+  bash roahos
+fi
+echo "Done"
+sleep 2
+echo "Now logout and login through your new 'awesome' session"
+sleep 1
+exit
+
+
+
+
+
+
