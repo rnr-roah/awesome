@@ -14,10 +14,10 @@
 - Productivity and efficiency centric. 
 
 ## Screenshot:
-![Screenshot of RoahOS](screenshot_1.png)![Screenshot of RoahOS](screenshot_2.png)
-![Screenshot of RoahOS](screenshot_3.png)![Screenshot of RoahOS](screenshot_4.png)
-![Screenshot of RoahOS](screenshot_5.png)![Screenshot of RoahOS](screenshot_6.png)
-![Screenshot of RoahOS](screenshot_7.png)
+![Screenshot of RoahOS](background.png)!![Screenshot of RoahOS](Screenshot_1.png)
+![Screenshot of RoahOS](Screenshot_2.png)![Screenshot of RoahOS](Screenshot_3.png)!
+[Screenshot of RoahOS](Screenshot_4.png)![Screenshot of RoahOS](Screenshot_5.png)!
+[Screenshot of RoahOS](Screenshot_6.png)![Screenshot of RoahOS](Screenshot_7.png)
 
 
 ### You can access the shortcuts/hotkeys by pressing Mod + s
