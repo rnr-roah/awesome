@@ -14,7 +14,7 @@
 - Productivity and efficiency centric. 
 
 ## Screenshot:
-![Screenshot of RoahOS](background.png)!![Screenshot of RoahOS](Screenshot_1.png)
+![Screenshot of RoahOS](background.png)![Screenshot of RoahOS](Screenshot_1.png)
 ![Screenshot of RoahOS](Screenshot_2.png)![Screenshot of RoahOS](Screenshot_3.png)
 ![Screenshot of RoahOS](Screenshot_4.png)![Screenshot of RoahOS](Screenshot_5.png)
 ![Screenshot of RoahOS](Screenshot_6.png)![Screenshot of RoahOS](Screenshot_7.png)
