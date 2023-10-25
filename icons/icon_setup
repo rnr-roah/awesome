@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo cp -r ~/.config/awesome/icons/* /usr/share/awesome/icons_tags/

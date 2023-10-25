@@ -1,0 +1,12 @@
+#!/bin/bash
+#1) Copy the theme folder(sugar-candy) to the location /usr/share/sddm/themes/
+#2) Edit the file to set the custom theme:
+#   vim /etc/sddm.conf.d/kde_settings.conf
+
+sudo cp -r ~/.config/awesome/sddm_theming/* /usr/share/sddm/themes/
+
+sudo mkdir /etc/sddm.conf.d
+
+sudo cp -r ~/.config/awesome/sddm_theming/kde_settings.conf /etc/sddm.conf.d/
+
+

@@ -39,7 +39,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
+beautiful.init(awful.util.get_themes_dir() .. "default-roah/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -130,7 +130,7 @@ tyrannical.tags = {
     icon        = "/usr/share/awesome/icons_tags/files.png",
     layout      = awful.layout.suit.tile,
     class  = {
-      "Thunar", "Konqueror", "Dolphin", "ark", "Org.gnome.Nautilus", "shut-down", "btman", "wifi",
+      "Thunar", "Konqueror", "Dolphin", "pcmanfm", "Org.gnome.Nautilus", "shut-down", "btman", "wifi",
     }
   } ,
   
@@ -148,7 +148,20 @@ tyrannical.tags = {
   } ,
 
   {
-    name        = "Doc -6",
+    name        = "",                 -- Call the tag "Media -6
+    init        = true,                   -- Load the tag on startup
+    exclusive   = true,                   -- Refuse any other type of clients (by classes)
+    screen      = {1,2},                   -- Create this tag on screen 1 and screen 2
+    icon        = "/usr/share/awesome/icons_tags/media.png",                
+    layout      = awful.layout.suit.tile, -- Use the tile layout
+    selected    = true,
+    class       = { --Accept the following classes, refuse everything else (because of "exclusive=true")
+      "vlc" , "spotify" , "kmix", "mpv", "btman", "shut-down", "wifi",
+    }
+  } ,
+  
+  {
+    name        = "Doc -7",
     init        = false, -- This tag wont be created at startup, but will be when one of the
     -- client in the "class" section will start. It will be created on
     -- the client startup screen
@@ -384,7 +397,7 @@ globalkeys = awful.util.table.join(
   -- Standard program/hotkeys/shortcutsB
 
 ---- Start of Customized
-  awful.key({ modkey,           }, "e", function () awful.spawn("nautilus") end,
+  awful.key({ modkey,           }, "e", function () awful.spawn("pcmanfm") end,
     {description = "open file manager", group = "Customized launchers"}),
     
   awful.key({ modkey,           }, "b", function () awful.spawn("brave-browser-nightly") end,
