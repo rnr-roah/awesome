@@ -14,9 +14,11 @@
 - Productivity and efficiency centric. 
 
 ## Screenshot:
-![Screenshot of RoahOS](screenshot.png)![Screenshot of RoahOS](screenshot2.png)
-![Screenshot of RoahOS](screenshot3.png)![Screenshot of RoahOS](screenshot4.png)
-![Screenshot of RoahOS](screenshot5.png)
+![Screenshot of RoahOS](screenshot_1.png)![Screenshot of RoahOS](screenshot_2.png)
+![Screenshot of RoahOS](screenshot_3.png)![Screenshot of RoahOS](screenshot_4.png)
+![Screenshot of RoahOS](screenshot_5.png)![Screenshot of RoahOS](screenshot_6.png)
+![Screenshot of RoahOS](screenshot_7.png)
+
 
 ### You can access the shortcuts/hotkeys by pressing Mod + s
 Here, Mod stands for windows key or super key.
