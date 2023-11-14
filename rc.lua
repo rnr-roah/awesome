@@ -40,7 +40,6 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init(awful.util.get_themes_dir() .. "default-roah/theme.lua")
-
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("vim") or "nano"
@@ -78,28 +77,30 @@ end
 
 -- First, set some settings
 tyrannical.settings.default_layout =  awful.layout.suit.tile.left
-tyrannical.settings.master_width_factor = 0.66
+tyrannical.settings.master_width_factor = 0.5
 -- Some nerd icons for tags 
 -- , , , 󰪶, 
 -- Setup some tags
 tyrannical.tags = {
   {
-    name        = "",                 -- Call the tag "Term -1
+    name        = " ",                 -- Call the tag "Term -1
     init        = true,                   -- Load the tag on startup
     exclusive   = true,                   -- Refuse any other type of clients (by classes)
     screen      = {1,2},                   -- Create this tag on screen 1 and screen 2
     icon        = "/usr/share/awesome/icons_tags/terminal.png",                
     layout      = awful.layout.suit.tile, -- Use the tile layout
     selected    = true,
+    --exec_once = {"bash /home/roah/.config/awesome/programs/startup.sh"},
     class       = { --Accept the following classes, refuse everything else (because of "exclusive=true")
       "xterm" , "urxvt" , "alacritty","URxvt","XTerm","konsole","terminator","btman", "shut-down", "wifi",
     }
   } ,
   {
-    name        = "",--Internet -2
+    name        = " ",--Internet -2
     init        = true,
     exclusive   = true,
     screen      = {1,2},
+    clone_on    = 2,
     icon        = "/usr/share/awesome/icons_tags/browser.png",                 -- Use this icon for the tag (uncomment with a real path)
     screen      = screen.count()>1 and 2 or 1,-- Setup on screen 2 if there is more than 1 screen, else on screen 1
     layout      = awful.layout.suit.max,      -- Use the max layout
@@ -109,7 +110,7 @@ tyrannical.tags = {
   } ,
   
   {
-    name = "", --Develop -3
+    name        = " ", --Develop -3
     init        = true,
     exclusive   = true,
     screen      = {1,2},
@@ -123,10 +124,11 @@ tyrannical.tags = {
 
   } ,
   {
-    name = "",--Files -4
+    name        = " ",--Files -4
     init        = true,
     exclusive   = true,
-    screen      = 1,
+    screen      = {1,2},
+    clone_on    = 2,
     icon        = "/usr/share/awesome/icons_tags/files.png",
     layout      = awful.layout.suit.tile,
     class  = {
@@ -135,20 +137,21 @@ tyrannical.tags = {
   } ,
   
   {
-    name = "",--VM -5
+    name        = " ",--VM -5
     init        = true,
     exclusive   = true,
-    screen      = 1,
+    screen      = {1,2},
+    clone_on    = 2,
     icon        = "/usr/share/awesome/icons_tags/vm.png",
     layout      = awful.layout.suit.max,
     --exec_once = {"virtualbox"},
     class  = {
-      "VirtualBox", "virtualbox", "VirtualBox Manager", "kdeconnect.app", "virtualbox manager", "VirtualBoxVM", "+VirtualBoxVM", "scrcpy", "btman", "shut-down", "wifi",
+      "VirtualBox", "virtualbox", "VirtualBox Manager", "kdeconnect.app", "virtualbox manager", "VirtualBoxVM", "VirtualBox Machine","+VirtualBoxVM", "scrcpy", "btman", "shut-down", "wifi",
     }
   } ,
 
   {
-    name        = "",                 -- Call the tag "Media -6
+    name        = " ",                 -- Call the tag "Media -6
     init        = true,                   -- Load the tag on startup
     exclusive   = true,                   -- Refuse any other type of clients (by classes)
     screen      = {1,2},                   -- Create this tag on screen 1 and screen 2
@@ -161,7 +164,7 @@ tyrannical.tags = {
   } ,
   
   {
-    name        = "Doc -7",
+    name        = "Doc     ", --7
     init        = false, -- This tag wont be created at startup, but will be when one of the
     -- client in the "class" section will start. It will be created on
     -- the client startup screen
@@ -171,13 +174,14 @@ tyrannical.tags = {
       "Assistant"     , "Okular"         , "Evince"    , "EPDFviewer"   , "xpdf",
       "Xpdf"          ,                                        }
   } ,
+  
 }
 
 -- Ignore the tag "exclusive" property for the following clients (matched by classes)
 tyrannical.properties.intrusive = {
   "ksnapshot"     , "pinentry"       , "gtksu"     , "kcalc"        , "xcalc"               ,
   "feh"           , "Gradient editor", "spectacle" , "Paste Special", "Background color"    ,
-  "kcolorchooser" , "plasmoidviewer" , "Xephyr"    , "kruler"       , "plasmaengineexplorer",
+  "0000000kcolorchooser" , "plasmoidviewer" , "Xephyr"    , "kruler"       , "plasmaengineexplorer",
 }
 
 -- Ignore the tiled layout for the matching clients
@@ -303,7 +307,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- @DOC_WIBAR@
     -- Create the top wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, bg=beautiful.bg_normal.."80"})
+    s.mywibox = awful.wibar({ position = "top", screen = s, bg=beautiful.bg_normal.."80", height = "20"})
   
     -- @DOC_SETUP_WIDGETS@
     -- Add widgets to the wibox
@@ -315,17 +319,19 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytaglist,
         s.mypromptbox,
       },
-        mykeyboardlayout,-- Middle widget
-      
+      {
+       layout = wibox.layout.align.horizontal,
+       mykeyboardlayout,-- Middle widget
+      },
       { -- Right widgets
         layout = wibox.layout.fixed.horizontal,        
         mytextclock,
-        wibox.widget.systray(),
+	wibox.widget.systray(),
         s.mylayoutbox
       },
     }
     -- Create the bottom wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s, bg=beautiful.bg_normal.."00"})
+    s.mywibox = awful.wibar({ position = "bottom", screen = s, bg=beautiful.bg_normal.."00", height = "15"})
   
     -- @DOC_SETUP_WIDGETS@
     -- Add widgets to the wibox
@@ -347,10 +353,8 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 -- @DOC_GLOBAL_KEYBINDINGS@
 globalkeys = awful.util.table.join(
-  --Custom global keys for volume
-  awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -D pulse sset Master 2%+", false) end),
-  awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -D pulse sset Master 2%-", false) end),
-  awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -D pulse sset Master toggle", false) end),
+
+
 ---
   awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
     {description="show help", group="awesome"}),
@@ -396,7 +400,14 @@ globalkeys = awful.util.table.join(
 
   -- Standard program/hotkeys/shortcutsB
 
----- Start of Customized
+---- Start of Customized--Custom global keys for volume
+  awful.key({ "Control" }, ".", function () awful.util.spawn("amixer -q sset Master 2%+", false) end,
+    {description = "volume increase", group = "Customized launchers /volume"}),
+  awful.key({"Control" }, ",", function () awful.util.spawn("amixer -q sset Master 2%-", false) end,
+    {description = "volume decrease", group = "Customized launchers /volume"}),
+  awful.key({"Control" }, "m", function () awful.util.spawn("amixer -q sset Master toggle", false) end,
+    {description = "volume mute/unmute", group = "Customized launchers /volume"}),
+----
   awful.key({ modkey,           }, "e", function () awful.spawn("pcmanfm") end,
     {description = "open file manager", group = "Customized launchers"}),
     
@@ -409,7 +420,7 @@ globalkeys = awful.util.table.join(
   awful.key({ modkey, "Shift"   }, "b", function () awful.spawn("alacritty --class 'btman' -e btman") end,
     {description = "open bluetooth", group = "Customized launchers"}),
     
-  awful.key({ modkey, "Shift"   }, "i", function () awful.spawn("alacritty --class 'wifi' -e wifi") end,
+  awful.key({ modkey, "Shift"   }, "n", function () awful.spawn("alacritty --class 'wifi' -e wifi") end,
     {description = "open wifi", group = "Customized launchers"}),
   --awful.key({ modkey,           }, "c", function () awful.spawn("alacritty --class 'nvim' -e nvim") end,
     --{description = "open nvim(editor)", group = "Customized launchers"}),
@@ -417,6 +428,8 @@ globalkeys = awful.util.table.join(
   awful.key({ modkey, "Shift"   }, "v", function () awful.spawn("virtualbox") end,
     {description = "open virtaulbox manager", group = "Customized launchers"}),
     
+  awful.key({ modkey,           }, "d", function () awful.spawn("rofi -show") end,
+    {description = "open rofi", group = "Customized launchers"}),
   awful.key({ modkey, "Shift"   }, "s", function () awful.spawn("spectacle") end,
     {description = "open screenshot tool", group = "Customized launchers"}),
     
@@ -519,7 +532,7 @@ clientkeys = awful.util.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+for i = 0, 9 do
     globalkeys = awful.util.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
@@ -709,9 +722,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 beautiful.useless_gap = 5
 
 --Appearance stuff
-beautiful.notification_opacity = '20'
-beautiful.notification_icon_size = 50
-beautiful.notification_bg = '69, 79, 94'
+beautiful.notification_opacity = '100'
+beautiful.notification_icon_size = 100
+beautiful.notification_bg = '#1a1a1a'
 beautiful.notification_fg = '#d4be98'
 
 
