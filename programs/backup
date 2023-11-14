@@ -2,6 +2,6 @@
 echo "Proceed with backup?"
 echo "Enter to continue, ctrl + c to cancel"
 read enter
-sudo cp ~/.config/awesome/rc.lua ~/.config/awesome/backup_rc.lua
+sudo cp -r -v ~/.config/awesome ~/.config/awesome_backup
 echo "Backup completed"
 exit
