@@ -77,7 +77,7 @@ end
 
 -- First, set some settings
 tyrannical.settings.default_layout =  awful.layout.suit.tile.left
-tyrannical.settings.master_width_factor = 0.5
+tyrannical.settings.master_width_factor = 0.55
 -- Some nerd icons for tags 
 -- , , , 󰪶, 
 -- Setup some tags
@@ -119,7 +119,7 @@ tyrannical.tags = {
     -- The tag can be used on both screen, but only one at once
     layout      = awful.layout.suit.tile                         ,
     class ={
-      "Kate", "codium", "Code", "Code::Blocks" , "nvim", "kate4","Gedit","gedit", "btman", "shut-down", "wifi",
+      "Kate", "codium", "Code", "code-oss", "Code::Blocks" , "nvim", "kate4","Gedit","gedit", "btman", "shut-down", "wifi",
       }
 
   } ,
@@ -152,19 +152,18 @@ tyrannical.tags = {
 
   {
     name        = " ",                 -- Call the tag "Media -6
-    init        = true,                   -- Load the tag on startup
-    exclusive   = true,                   -- Refuse any other type of clients (by classes)
+    init        = false,                   -- Load the tag on startup
+    exclusive   = false,                   -- Refuse any other type of clients (by classes)
     screen      = {1,2},                   -- Create this tag on screen 1 and screen 2
     icon        = "/usr/share/awesome/icons_tags/media.png",                
     layout      = awful.layout.suit.tile, -- Use the tile layout
-    selected    = true,
     class       = { --Accept the following classes, refuse everything else (because of "exclusive=true")
       "vlc" , "spotify" , "kmix", "mpv", "btman", "shut-down", "wifi",
     }
   } ,
   
   {
-    name        = "Doc     ", --7
+    name        = "+", --7
     init        = false, -- This tag wont be created at startup, but will be when one of the
     -- client in the "class" section will start. It will be created on
     -- the client startup screen
@@ -206,9 +205,105 @@ tyrannical.properties.centered = {
 tyrannical.properties.size_hints_honor = { xterm = false, URxvt = false, aterm = false, sauer_client = false, mythfrontend  = false}
 
 -- }}}
+---
+myawesomemenu = {
+    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+    { "manual", terminal .. " -e man awesome" },
+    { "edit config", editor_cmd .. " " .. awesome.conffile },
+    { "restart", awesome.restart },
+    { "quit", function() awesome.quit() end },
+    }
 
-mymainmenu = awful.menu({ items = { { "Roah OS", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
+ editormenu = {
+     { "gedit",     "gedit" },
+     { "micro",     terminal .. " -e micro" },
+ }
+ 
+ officemenu = {
+     { "files",     "pcmanfm" },
+     { "writer",    "loffice --writer" },
+     { "calc",      "loffice --calc" },
+     { "impress",   "loffice --impress" }
+ }
+ 
+ networkmenu = {
+     { "firefox",   "firefox" },
+	{ "falkon",	"falkon" },
+     { "w3m",       terminal .. " -e 'w3m google.go.in'" },
+     { "nw-manager", terminal .. " -e nmtui" }
+ }
+ 
+ grafixmenu = {
+     { "viewnior", "viewnior" },
+     { "color picker", "agave" },
+     { "gimp", "gimp" },
+     { "inkscape", "inkscape" }
+ }
+ 
+ termmenu = {
+    { "termite", "termite" },
+    { "terminator", "terminator" },
+    { "sakura",    "sakura" },
+    { "urxvtc",      "urxvtc" }
+ }
+ 
+multimediamenu = {
+    { "deadbeef", "deadbeef" },
+    { "ncmpcpp" , terminal .. " -e ncmpcpp" },
+    { "pulseaudio", "pavucontrol" },
+    { "vlc",    "vlc" }
+ }
+ 
+settingsmenu = {
+    { "lxappearance", "lxappearance" },
+ }
+ 
+systemmenu = {
+    { "software-manager", "pamac-manager" },
+    { "pacman-mirrors", terminal .. " -e 'sudo pacman-mirrors -f'" },
+    { "htop", terminal .. " -e htop" },
+    { "kill", "xkill" }
+ }
+
+utilsmenu = {
+    { "screenshot", "scrot -d5 AwSm-Scrot-%d%b%y-%M%S.png -e 'mv $f ~/shots' && viewnior ~/shots/$f" },
+    { "toggleConky", "toggleAwesomeConky" },
+    { "virt manager", "virt-manager" },    
+    { "screengrab", "screengrab" }
+ }
+
+myexitmenu = {
+	{ "logout", function() awesome.quit() end},
+	{ "reboot", "systemctl reboot" },
+	{ "shutdown", "systemctl poweroff" }
+}
+ 
+ mymainmenu = awful.menu({ 
+                items = { 
+                    { "editors", editormenu },
+                    { "terms" , termmenu },
+                    { "network", networkmenu },
+                    { "office", officemenu },
+                    { "grafix", grafixmenu },
+                    { "multimedia", multimediamenu },
+                    { "settings", settingsmenu },
+                    { "system", systemmenu },
+                    { "utils", utilsmenu },
+                    { "awesome", myawesomemenu },
+                    { "exit options", myexitmenu}
+}                         
+                         })
+ 
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+                                      menu = mymainmenu })
+---
+
+mymainmenu = awful.menu({ items = { { "Roah OS", myawesomemenu, },
+                                    { "open terminal", terminal },
+                                    { "Settings", settingsmenu, },
+                                    { "Utils", utilsmenu, },
+                                    { "Editors", editormenu, },
+                                    { "Power options", myexitmenu, }
                                   }
                         })
 
@@ -315,7 +410,9 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.align.horizontal,
       { -- Left widgets
         layout = wibox.layout.align.horizontal,
-	spacing = 100,
+	--mylauncher,
+	wibox.widget.imagebox("/home/roah/Downloads/r.png"),
+	wibox.widget.textbox(" |  "),
         s.mytaglist,
         s.mypromptbox,
       },
@@ -325,9 +422,11 @@ awful.screen.connect_for_each_screen(function(s)
       },
       { -- Right widgets
         layout = wibox.layout.fixed.horizontal,        
+	wibox.widget.textbox(" |  "),
         mytextclock,
+	wibox.widget.textbox(" |  "),
 	wibox.widget.systray(),
-        s.mylayoutbox
+        --s.mylayoutbox
       },
     }
     -- Create the bottom wibox
@@ -336,9 +435,20 @@ awful.screen.connect_for_each_screen(function(s)
     -- @DOC_SETUP_WIDGETS@
     -- Add widgets to the wibox
     s.mywibox:setup {
-      layout = wibox.layout.align.horizontal,
-      s.mytasklist
-    }
+          layout = wibox.layout.align.horizontal,
+          { -- Left widgets
+            layout = wibox.layout.align.horizontal,
+    	s.mytasklist,
+          },
+          {
+           layout = wibox.layout.align.horizontal,
+           mykeyboardlayout,-- Middle widget
+          },
+          { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            s.mylayoutbox
+          },
+        }
 end)
 -- }}}
 -- {{{ Mouse bindings
