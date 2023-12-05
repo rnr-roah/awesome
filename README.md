@@ -15,9 +15,9 @@
 
 ## Screenshot:
 ![Screenshot of RoahOS](background.png)![Screenshot of RoahOS](Screenshots/Screenshot_1.png)
-![Screenshot of RoahOS](Screenshot_2.png)![Screenshot of RoahOS](Screenshots/Screenshot_3.png)
-![Screenshot of RoahOS](Screenshot_4.png)![Screenshot of RoahOS](Screenshots/Screenshot_5.png)
-![Screenshot of RoahOS](Screenshot_6.png)![Screenshot of RoahOS](Screenshots/Screenshot_7.png)
+![Screenshot of RoahOS](Screenshots/Screenshot_2.png)![Screenshot of RoahOS](Screenshots/Screenshot_3.png)
+![Screenshot of RoahOS](Screenshots/Screenshot_4.png)![Screenshot of RoahOS](Screenshots/Screenshot_5.png)
+![Screenshot of RoahOS](Screenshots/Screenshot_6.png)![Screenshot of RoahOS](Screenshots/Screenshot_7.png)
 
 
 ### You can access the shortcuts/hotkeys by pressing Mod + s
