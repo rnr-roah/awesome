@@ -12,11 +12,12 @@ run "xfce4-power-manager"
 #restoring wallpaper
 
 run "nitrogen --restore"
-
+#run "variety"
 #starting transparency tool
 
-run "picom"
-run "compton"
+#run "picom"
+#run "compton"
+run "xcompmgr"
 
 #starting volume icon
 run "volumeicon"
@@ -24,8 +25,8 @@ run "volumeicon"
 #starting kdeconnect indicator
 run "kdeconnect-indicator"
 
-#starting thunderbird
-#run "thunderbird"
+#starting thunderbird in bg
+run "thunderbird --headless"
 
 ##run "pavucontrol &&"
 
