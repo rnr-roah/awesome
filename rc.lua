@@ -1,4 +1,3 @@
---Testing
 local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
@@ -40,7 +39,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init(awful.util.get_themes_dir() .. "default-roah/theme.lua")
+--beautiful.init(awful.util.get_themes_dir() .. "default-roah/theme.lua")
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "default-roah")
+beautiful.init(theme_path)
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("vim") or "nano"
@@ -403,7 +404,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- @DOC_WIBAR@
     -- Create the top wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, bg=beautiful.bg_normal.."80", height = "20"})
+    s.mywibox = awful.wibar({ position = "top", screen = s, bg=beautiful.bg_normal.."95", height = "20"})
   
     -- @DOC_SETUP_WIDGETS@
     -- Add widgets to the wibox
@@ -845,3 +846,5 @@ beautiful.notification_fg = '#d4be98'
 --awful.spawn.with_shell("picom")
 awful.spawn.with_shell("kdeconnect-indicator")
 awful.spawn.with_shell("bash ~/.config/awesome/programs/startup.sh")
+awful.spawn.with_shell("alacritty -e sudo pacman -Sy")
+
