@@ -4,46 +4,46 @@ echo "Roah os post installation script(Press enter)"
 read
 
 ###installing awesome and essential programs
-sudo pacman -S --noconfirm awesome
-sudo pacman -S --noconfirm picom
-sudo pacman -S --noconfirm nitrogen
-sudo pacman -S --noconfirm alacritty
-sudo pacman -S --noconfirm pcmanfm
-sudo pacman -S --noconfirm vim
-sudo pacman -S --noconfirm nvim
-sudo pacman -S --noconfirm mpv
-sudo pacman -S --noconfirm rofi
-sudo pacman -S --noconfirm spectacle
-sudo pacman -S --noconfirm blueman
-sudo pacman -S --noconfirm blueman-utils
-sudo pacman -S --noconfirm amixer
-sudo pacman -S --noconfirm scrcpy
-sudo pacman -S --noconfirm kdeconnect
-sudo pacman -S --noconfirm gedit
-sudo pacman -S --noconfirm xfce4-power-manager
-sudo pacman -S --noconfirm gparted
-sudo pacman -S --noconfirm neofetch
-sudo pacman -S --noconfirm htop
-sudo pacman -S --noconfirm ranger
-sudo pacman -S --noconfirm code
+# sudo pacman -S --noconfirm awesome
+# sudo pacman -S --noconfirm picom
+# sudo pacman -S --noconfirm nitrogen
+# sudo pacman -S --noconfirm alacritty
+# sudo pacman -S --noconfirm pcmanfm
+# sudo pacman -S --noconfirm vim
+# sudo pacman -S --noconfirm nvim
+# sudo pacman -S --noconfirm mpv
+# sudo pacman -S --noconfirm rofi
+# sudo pacman -S --noconfirm spectacle
+# sudo pacman -S --noconfirm blueman
+# sudo pacman -S --noconfirm blueman-utils
+# sudo pacman -S --noconfirm amixer
+# sudo pacman -S --noconfirm scrcpy
+# sudo pacman -S --noconfirm kdeconnect
+# sudo pacman -S --noconfirm gedit
+# sudo pacman -S --noconfirm xfce4-power-manager
+# sudo pacman -S --noconfirm gparted
+# sudo pacman -S --noconfirm neofetch
+# sudo pacman -S --noconfirm htop
+# sudo pacman -S --noconfirm ranger
+# sudo pacman -S --noconfirm code
 ###
 
 ###Copying awesome configs
 
-#Setting awesome folder
-sudo mkdir ~/.config/awesome
-sudo cp -r * ~/.config/awesome/
-sudo rm ~/.config/awesome/setup
-#
+# #Setting awesome folder
+# sudo mkdir ~/.config/awesome
+# sudo cp -r * ~/.config/awesome/
+# sudo rm ~/.config/awesome/setup
+# #
 #Setting icons
 sudo mkdir /usr/share/awesome/icons_tag
-sudo cp -r ~/.config/awesome/icons/* /usr/share/awesome/icons_tags/
+sudo cp -r /home/roah/.config/awesome/icons/* /usr/share/awesome/icons_tags/
 #
 #Setting custom commands
-sudo cp -r ~/.config/awesome/programs/* /usr/bin/
+sudo cp -r /home/roah/.config/awesome/programs/* /usr/bin/
 #
 #Setting theme and wallpaper
-sudo cp -r ~/.config/awesome/theme /usr/share/awesome/themes/default-roah
+sudo cp -r /home/roah/.config/awesome/themes /usr/share/awesome/themes/default-roah
 #
 
 

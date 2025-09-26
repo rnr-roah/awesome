@@ -108,7 +108,7 @@ tyrannical.tags = {
     layout      = awful.layout.suit.max,      -- Use the max layout
     class = {
       "Opera"         , "Firefox"        , "btman"    , "Dillo"        , "brave-browser-nightly", "shut-down",
-      "Chromium"      , "Brave-browser"        , "midori", "Midori", "wifi"     }
+      "Chromium"      , "Brave-browser"        , "midori", "Midori", "wifi", "zen", "zen-browser"     }
   } ,
   
   {
@@ -134,7 +134,7 @@ tyrannical.tags = {
     icon        = "/usr/share/awesome/icons_tags/files.png",
     layout      = awful.layout.suit.tile,
     class  = {
-      "Thunar", "Konqueror", "Dolphin", "pcmanfm", "Org.gnome.Nautilus", "shut-down", "btman", "wifi",
+      "Thunar", "Konqueror", "Dolphin", "pcmanfm", "Org.gnome.Nautilus", "shut-down", "btman", "wifi","file",
     }
   } ,
   
@@ -520,8 +520,8 @@ globalkeys = awful.util.table.join(
   awful.key({"Control" }, "m", function () awful.util.spawn("amixer -q sset Master toggle", false) end,
     {description = "volume mute/unmute", group = "Customized launchers /volume"}),
 ----
-  awful.key({ modkey,           }, "e", function () awful.spawn("pcmanfm") end,
-    {description = "open file manager", group = "Customized launchers"}),
+--i  awful.key({ modkey,           }, "e", function () awful.spawn("pcmanfm") end,
+--    {description = "open file manager", group = "Customized launchers"}),
     
   awful.key({ modkey,           }, "b", function () awful.spawn("brave-browser-nightly") end,
     {description = "open brave", group = "Customized launchers"}),
@@ -534,6 +534,10 @@ globalkeys = awful.util.table.join(
     
   awful.key({ modkey, "Shift"   }, "n", function () awful.spawn("alacritty --class 'wifi' -e wifi") end,
     {description = "open wifi", group = "Customized launchers"}),
+  
+  awful.key({ modkey,           }, "e", function () awful.spawn("alacritty --class 'file' -e ranger") end,
+    {description = "open file manager (ranger)", group = "Customized launchers"}),
+
   --awful.key({ modkey,           }, "c", function () awful.spawn("alacritty --class 'nvim' -e nvim") end,
     --{description = "open nvim(editor)", group = "Customized launchers"}),
     
@@ -835,7 +839,7 @@ beautiful.useless_gap = 5
 
 --Appearance stuff
 beautiful.notification_opacity = '100'
-beautiful.notification_icon_size = 100
+beautiful.notification_icon_size = 400
 beautiful.notification_bg = '#1a1a1a'
 beautiful.notification_fg = '#d4be98'
 
@@ -846,7 +850,6 @@ beautiful.notification_fg = '#d4be98'
 --awful.spawn.with_shell("picom")
 awful.spawn.with_shell("kdeconnect-indicator")
 awful.spawn.with_shell("xcompmgr")
-awful.spawn.with_shell("bash ~/.config/awesome/programs/startup.sh")
-awful.spawn.with_shell("alacritty -e sudo pacman -Sy")
-awful.spawn.with_shell("alacritty -e xrandr --output Virtual1 --mode 1920x1080")
-
+--awful.spawn.with_shell("bash ~/.config/awesome/programs/startup.sh")
+awful.spawn.with_shell("alacritty -e ranger")
+awful.spawn.with_shell("alacritty -e xrandr --output Virtual-1 --mode 1920x1080")

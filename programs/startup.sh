@@ -11,7 +11,7 @@ run "xfce4-power-manager"
 
 #restoring wallpaper
 
-run "nitrogen --restore"
+--run "nitrogen --restore"
 #run "variety"
 #starting transparency tool
 
