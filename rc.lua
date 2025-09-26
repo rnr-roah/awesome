@@ -847,9 +847,9 @@ beautiful.notification_fg = '#d4be98'
 -- Autostart
 --awful.spawn.with_shell("xfce4-power-manager")
 --awful.spawn.with_shell("nitrogen --restore")
---awful.spawn.with_shell("picom")
+awful.spawn.with_shell("picom")
 awful.spawn.with_shell("kdeconnect-indicator")
-awful.spawn.with_shell("xcompmgr")
+--awful.spawn.with_shell("xcompmgr")
 --awful.spawn.with_shell("bash ~/.config/awesome/programs/startup.sh")
 awful.spawn.with_shell("alacritty -e ranger")
 awful.spawn.with_shell("alacritty -e xrandr --output Virtual-1 --mode 1920x1080")
